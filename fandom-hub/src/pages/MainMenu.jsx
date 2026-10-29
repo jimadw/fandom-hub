@@ -42,6 +42,13 @@ export default function MainMenu() {
           <h2 className="text-xl font-bold text-yellow-400 arcade-font mb-2">ShadowDex</h2>
           <p className="text-slate-400 text-sm">Who's that Pokémon?</p>
         </Link>
+
+        {/* Karta Westeros Map (NEO) */}
+        <Link to="/westeros-map" className="bg-slate-900/80 border border-amber-500/30 p-6 rounded-3xl hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] transition-all group flex flex-col items-center text-center">
+          <div className="text-6xl mb-4 group-hover:scale-110 transition-transform drop-shadow-lg">🗺️</div>
+          <h2 className="text-xl font-bold text-amber-500 arcade-font mb-2">Westeros Mapper</h2>
+          <p className="text-slate-400 text-sm">Locate strongholds on the map.</p>
+        </Link>
         
         {/* NEA VIP KARTA */}
         {isVipUnlocked ? (
@@ -70,7 +77,6 @@ export default function MainMenu() {
             </button>
           </div>
         )}
-        
       </div>
     </div>
   );
