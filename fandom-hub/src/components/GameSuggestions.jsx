@@ -18,6 +18,7 @@ export default function GameSuggestions() {
     { path: '/pokemon', name: 'ShadowDex', desc: 'Click to switch game', icon: '⚡', color: 'text-yellow-500' },
     { path: '/trivia', name: 'BrainGlitch', desc: 'Click to switch game', icon: '🧠', color: 'text-purple-400' },
     { path: '/westeros-map', name: 'Westeros Mapper', desc: 'Click to switch game', icon: '🗺️', color: 'text-amber-500' },
+    { path: '/lotr', name: 'Wisdom of Middle-earth', desc: 'Click to switch game', icon: '🧝', color: 'text-green-500' },
     { path: '/vip-blur', name: 'VIP Blur Reveal', desc: 'Click to switch game', icon: '🔥', color: 'text-red-500', isVip: true }
   ];
 

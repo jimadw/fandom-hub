@@ -178,18 +178,22 @@ export default function WesterosMap() {
               draggable={false}
             />
 
-            {/* Marker Παίκτη */}
+            {/* Marker Παίκτη (Stark Pin) */}
             {guessPos && (
-              <div 
-                className="absolute w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow-[0_0_10px_rgba(59,130,246,1)] -translate-x-1/2 -translate-y-1/2 z-20"
+              <img 
+                src="/stark-pin.png"
+                alt="Player Guess"
+                className="absolute w-10 h-10 md:w-12 md:h-12 -translate-x-1/2 -translate-y-1/2 z-30 drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]"
                 style={{ left: `${guessPos.x}%`, top: `${guessPos.y}%` }}
               />
             )}
 
-            {/* Πραγματικό Marker (Στόχος) */}
+            {/* Πραγματικό Marker Στόχος (Targaryen Pin) */}
             {status === 'revealed' && (
-              <div 
-                className="absolute w-5 h-5 bg-amber-500 rounded-full border-2 border-white shadow-[0_0_15px_rgba(245,158,11,1)] animate-pulse -translate-x-1/2 -translate-y-1/2 z-20"
+              <img 
+                src="/targaryen-pin.png"
+                alt="Actual Target"
+                className="absolute w-12 h-12 md:w-14 md:h-14 -translate-x-1/2 -translate-y-1/2 z-20 drop-shadow-[0_0_15px_rgba(245,158,11,0.8)] animate-bounce"
                 style={{ left: `${target.x}%`, top: `${target.y}%` }}
               />
             )}

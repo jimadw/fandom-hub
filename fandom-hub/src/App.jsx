@@ -9,6 +9,7 @@ import AnimeGuesser from './pages/AnimeGuesser';
 import PokemonShadow from './pages/PokemonShadow';
 import VipBlurGame from './pages/VipBlurGame';
 import WesterosMap from './pages/WesterosMap';
+import LotrGame from './pages/LotrGame';
 import Shop from './pages/Shop';
 
 const AppRoutes = () => {
@@ -33,6 +34,7 @@ const AppRoutes = () => {
         <Route path="/pokemon" element={<PokemonShadow />} />
         <Route path="/vip-blur" element={<VipBlurGame />} />
         <Route path="/westeros-map" element={<WesterosMap />} />
+        <Route path="/lotr" element={<LotrGame />} />
         <Route path="/shop" element={<Shop />} />
         {/* Αν γράψεις λάθος URL, σε γυρνάει στο κεντρικό μενού */}
         <Route path="*" element={<Navigate to="/" />} />

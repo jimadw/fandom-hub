@@ -1,14 +1,21 @@
 import { usePlayer } from '../context/PlayerContext';
 
 const AVATARS = [
-  { icon: '👾', name: 'Invader', cost: 0 },
-  { icon: '👻', name: 'Phantom', cost: 50 },
-  { icon: '🤖', name: 'Mecha', cost: 100 },
-  { icon: '🦊', name: 'Fox', cost: 150 },
-  { icon: '⚡', name: 'Spark', cost: 200 },
-  { icon: '🔥', name: 'Flame', cost: 300 },
-  { icon: '💀', name: 'Skull', cost: 400 },
-  { icon: '👑', name: 'King', cost: 1000 },
+  // POKEMON
+  { id: 'pikachu', name: 'PIKACHU', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png', price: 100 },
+  { id: 'charizard', name: 'CHARIZARD', icon: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png', price: 200 },
+  
+  // ANIME
+  { id: 'luffy', name: 'LUFFY', icon: 'https://cdn.myanimelist.net/images/characters/9/310307.jpg', price: 300 },
+  { id: 'goku', name: 'GOKU', icon: '/avatars/goku.jpg', price: 300 },
+  
+  // GAME OF THRONES 
+  { id: 'jon', name: 'JON SNOW', icon: 'https://static.hbo.com/content/dam/hbodata/series/game-of-thrones/character/s5/john-snow-1920.jpg', price: 400 },
+  { id: 'dany', name: 'DAENERYS', icon: '/avatars/dany.jpg', price: 400 },
+  
+  // LORD OF THE RINGS
+  { id: 'gandalf', name: 'GANDALF', icon: 'https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg', price: 500 },
+  { id: 'aragorn', name: 'ARAGORN', icon: 'https://static.wikia.nocookie.net/lotr/images/b/b6/Aragorn_profile.jpg', price: 500 }
 ];
 
 const THEMES_LIST = [
@@ -21,16 +28,16 @@ export default function Shop() {
   const { currentUser, buyAvatar, equipAvatar, buyTheme, equipTheme } = usePlayer();
 
   const handleAvatarAction = (avatar) => {
-    const isUnlocked = currentUser.unlockedAvatars.includes(avatar.icon);
+    const isUnlocked = currentUser?.unlockedAvatars?.includes(avatar.icon) || currentUser?.unlockedAvatars?.includes(avatar.id);
     if (isUnlocked) {
       equipAvatar(avatar.icon);
     } else {
-      buyAvatar(avatar.icon, avatar.cost);
+      buyAvatar(avatar.icon, avatar.price);
     }
   };
 
   const handleThemeAction = (theme) => {
-    const unlockedT = currentUser.unlockedThemes || ['default'];
+    const unlockedT = currentUser?.unlockedThemes || ['default'];
     const isUnlocked = unlockedT.includes(theme.id);
     if (isUnlocked) {
       equipTheme(theme.id);
@@ -55,9 +62,9 @@ export default function Shop() {
       <h3 className="text-2xl font-bold text-white mb-6 w-full text-left border-b border-white/10 pb-2">Player Avatars</h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full mb-16">
         {AVATARS.map((avatar, index) => {
-          const isUnlocked = currentUser?.unlockedAvatars.includes(avatar.icon);
-          const isEquipped = currentUser?.avatar === avatar.icon;
-          const canAfford = currentUser?.tickets >= avatar.cost;
+          const isUnlocked = currentUser?.unlockedAvatars?.includes(avatar.icon) || currentUser?.unlockedAvatars?.includes(avatar.id);
+          const isEquipped = currentUser?.avatar === avatar.icon || currentUser?.avatar === avatar.id;
+          const canAfford = currentUser?.tickets >= avatar.price;
 
           return (
             <div 
@@ -68,8 +75,17 @@ export default function Shop() {
                 'bg-slate-900/80 border-slate-700 opacity-80'
               }`}
             >
-              <div className="text-6xl mb-4 drop-shadow-lg">{avatar.icon}</div>
-              <h3 className="text-white font-bold tracking-wider mb-4 uppercase text-sm">{avatar.name}</h3>
+              {/* EIKONA TOU AVATAR */}
+              <div className="h-20 w-20 mb-4 overflow-hidden rounded-full border-2 border-purple-500/50">
+                <img 
+                  src={avatar.icon} 
+                  alt={avatar.name} 
+                  className="w-full h-full object-cover" 
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+
+              <h3 className="text-white font-bold tracking-wider mb-4 uppercase text-sm text-center">{avatar.name}</h3>
               
               <button
                 onClick={() => handleAvatarAction(avatar)}
@@ -81,7 +97,7 @@ export default function Shop() {
                   'bg-slate-800 text-slate-500 cursor-not-allowed'
                 }`}
               >
-                {isEquipped ? 'EQUIPPED' : isUnlocked ? 'EQUIP' : `BUY 🎟️ ${avatar.cost}`}
+                {isEquipped ? 'EQUIPPED' : isUnlocked ? 'EQUIP' : `BUY 🎟️ ${avatar.price}`}
               </button>
             </div>
           );

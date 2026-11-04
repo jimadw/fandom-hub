@@ -50,6 +50,13 @@ export default function MainMenu() {
           <p className="text-slate-400 text-sm">Locate strongholds on the map.</p>
         </Link>
         
+        {/* Karta Lord of the Rings (NEO) */}
+        <Link to="/lotr" className="bg-slate-900/80 border border-green-500/30 p-6 rounded-3xl hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] transition-all group flex flex-col items-center text-center">
+          <div className="text-6xl mb-4 group-hover:scale-110 transition-transform drop-shadow-lg">🧝</div>
+          <h2 className="text-xl font-bold text-green-500 arcade-font mb-2">Wisdom of Middle-earth</h2>
+          <p className="text-slate-400 text-sm">Who said the quote?</p>
+        </Link>
+        
         {/* NEA VIP KARTA */}
         {isVipUnlocked ? (
           <Link to="/vip-blur" className="bg-slate-900/80 border border-red-500/70 p-6 rounded-3xl hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] transition-all group flex flex-col items-center text-center relative overflow-hidden">

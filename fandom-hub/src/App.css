@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+.lotr-font {
+  font-family: 'MedievalSharp', cursive;
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -185,3 +191,9 @@
   
 }
 
+
+
+
+.lotr-font {
+  font-family: 'MedievalSharp', cursive;
+}

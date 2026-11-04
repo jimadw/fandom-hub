@@ -40,9 +40,19 @@ export default function Layout({ children }) {
             <Link 
               to="/shop" 
               title="Go to Reward Shop" 
-              className="w-10 h-10 bg-slate-800 rounded-xl border-2 border-purple-500 flex items-center justify-center text-2xl shadow-[0_0_10px_rgba(168,85,247,0.4)] hover:scale-110 transition-transform cursor-pointer"
+              className="w-10 h-10 bg-slate-800 rounded-xl border-2 border-purple-500 flex items-center justify-center text-2xl shadow-[0_0_10px_rgba(168,85,247,0.4)] hover:scale-110 transition-transform cursor-pointer overflow-hidden"
             >
-              {currentUser?.avatar}
+              {/* ΕΛΕΓΧΟΣ ΑΝ ΕΙΝΑΙ ΕΙΚΟΝΑ Η EMOJI */}
+              {currentUser?.avatar?.startsWith('http') ? (
+                <img 
+                  src={currentUser.avatar} 
+                  alt="Avatar" 
+                  className="w-full h-full object-cover" 
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <span className="text-xl">{currentUser?.avatar || '👤'}</span>
+              )}
             </Link>
 
             <button 
